@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/save">글작성</a>
-<a href="/findAll">글목록</a>
+<a href="/board/save">글작성</a>
+<a href="/board/findAll">글목록</a>
 </body>
 </html>

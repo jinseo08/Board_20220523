@@ -5,8 +5,28 @@
 
 <mapper namespace="Board">
     <insert id="save" parameterType="board">
-        insert into board_table(boardTitle,boardWriter,boardPassword,boardContents)
-        values(#{boardTitle},#{boardWriter},#{boardPassword},#{boardContents})
+        insert into board_table(boardTitle,boardWriter,boardPassword,boardContents,boardCreatedDate)
+        values(#{boardTitle},#{boardWriter},#{boardPassword},#{boardContents},now())
     </insert>
+
+    <select id="findAll" resultType="board">
+        select * from board_table
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="board">
+        select * from board_table where b_id = #{b_id}
+    </select>
+
+    <update id="hits" parameterType="Long">
+        update board_table set boardHits = boardHits + 1 where b_id = #{b_id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        delete from board_table where b_id = #{b_id}
+    </delete>
+
+    <update id="update" parameterType="board">
+        update board_table set boardContents=#{boardContents} where b_id = #{b_id}
+    </update>
 
 </mapper>

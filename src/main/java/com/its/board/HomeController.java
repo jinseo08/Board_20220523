@@ -11,14 +11,5 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/save")
-    public String save() {
-        return "save";
-    }
-
-    @GetMapping ("/findAll")
-    public String findAll(){
-        return "list";
-    }
 
 }
