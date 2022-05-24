@@ -33,4 +33,8 @@ public class BoardRepository {
     public int update(BoardDTO boardDTO) {
         return sql.update("Board.update",boardDTO);
     }
+
+    public void saveFile(BoardDTO boardDTO) {
+        sql.insert("Board.saveFile",boardDTO);
+    }
 }

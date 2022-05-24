@@ -16,7 +16,7 @@
     <input type="text" name="boardWriter" value="${boardDetail.boardWriter}" readonly><br>
     <input type="text" name="boardTitle" value="${boardDetail.boardTitle}"><br>
     <input type="password" name="boardPassword" value="${boardDetail.boardPassword}" readonly><br>
-    <textarea name="boardContents" rows="5" cols="10" value="${boardDetail.boardContents}"></textarea><br>
+    <textarea name="boardContents" rows="5" cols="10" >${boardDetail.boardContents}</textarea><br>
     <input type="submit" value="글수정">
 </form>
 </body>
