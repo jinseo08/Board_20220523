@@ -15,6 +15,9 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @Autowired
+    private CommentService commentService;
+
     @GetMapping ("/list")
     public String list(){
         return "board/list";
@@ -53,6 +56,9 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(b_id);
         model.addAttribute("boardDetail", boardDTO);
         model.addAttribute("page",page);
+        // 댓글 목록도 가져가야함
+        List<CommentDTO> commentDTOList = commentService.findAll(b_id);
+        model.addAttribute("commentList",commentDTOList);
         return "detail";
     }
 
