@@ -41,4 +41,8 @@
     <select id="count" resultType="int">
         select count(b_id) from board_table
     </select>
+
+    <select id="search" parameterType="java.util.HashMap" resultType="board">
+        select * from board_table where ${type} like concat('%',#{q},'%') order by b_id desc;
+    </select>
 </mapper>
