@@ -14,5 +14,6 @@
 <a href="/board/save">글작성</a>
 <a href="/board/saveFile">글작성(파일)</a>
 <a href="/board/findAll">글목록</a>
+<a href="/board/paging">페이징목록</a>
 </body>
 </html>

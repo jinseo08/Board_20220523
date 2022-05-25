@@ -24,7 +24,7 @@ public class BoardController {
     // @GetMapping("/board/save") - RequestMapping 미적용
     @GetMapping("/save") // - RequestMapping 적용
     public String save() {
-        return "board/save";
+        return "redirect:/board/paging";
     }
 
     // 글쓰기 처리
@@ -48,9 +48,11 @@ public class BoardController {
     }
 
     @GetMapping("/detail")
-    public String findById(@RequestParam Long b_id, Model model){
+    public String findById(@RequestParam Long b_id, Model model,
+                           @RequestParam(value = "page",required = false, defaultValue = "1") int page){
         BoardDTO boardDTO = boardService.findById(b_id);
         model.addAttribute("boardDetail", boardDTO);
+        model.addAttribute("page",page);
         return "detail";
     }
 
@@ -99,5 +101,18 @@ public class BoardController {
         boardService.saveFile(boardDTO);
         return "redirect:/board/findAll";
     }
+
+    @GetMapping("/paging")
+    public String paging(@RequestParam(value="page", required=false, defaultValue="1") int page, Model model) {
+        // required-false로 요청하면 /board/paging 요청도 가능
+        // 별도의 페이지 값을 요청하지 않으면 첫페이지(page=1)를 보여주자
+        List<BoardDTO> boardList = boardService.pagingList(page);
+        PageDTO paging = boardService.paging(page);
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("paging", paging);
+        return "board/pagingList";
+    }
+
+
 
 }

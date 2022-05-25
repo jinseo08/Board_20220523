@@ -43,10 +43,15 @@
 </table>
 <button onclick="pwCheck()">글수정</button>
 <button onclick="pwCheck()">글삭제</button>
+<button onclick="paging()">페이징목록</button>
 </body>
 <script>
     function pwCheck(){
         location.href = "/board/pwCheck?b_id=${boardDetail.b_id}";
+    }
+
+    function paging(){
+        location.href = "/board/paging?page=${page}"; // 직전에 있었던 페이지 값을 컨트롤러로 요청
     }
 </script>
 </html>
